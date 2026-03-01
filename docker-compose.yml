@@ -30,6 +30,7 @@ services:
       DEBUG: "True"
       ALLOWED_HOSTS: "localhost 127.0.0.1"
       DJANGO_SETTINGS_MODULE: myproject.settings
+      PYTHONPATH: /app
       DB_NAME: mydb
       DB_USER: myuser
       DB_PASSWORD: mypassword
@@ -41,3 +42,49 @@ services:
 
 volumes:
   postgres_data:
+
+#######################
+
+# version: '3.9'
+
+# services:
+#   db:
+#     image: postgres:15-alpine
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_DB: mydb
+#       POSTGRES_USER: myuser
+#       POSTGRES_PASSWORD: mypassword
+#     healthcheck:
+#       test: ["CMD-SHELL", "pg_isready -U myuser -d mydb"]
+#       interval: 5s
+#       timeout: 5s
+#       retries: 5
+
+#   web:
+#     build: .
+#     command: >
+#       sh -c "python manage.py migrate &&
+#              python manage.py collectstatic --noinput &&
+#              gunicorn myproject.wsgi:application --bind 0.0.0.0:8000 --workers 2"
+#     volumes:
+#       - .:/app
+#     ports:
+#       - "8001:8000"
+#     environment:
+#       SECRET_KEY: your-secret-key-change-in-production
+#       DEBUG: "True"
+#       ALLOWED_HOSTS: "localhost 127.0.0.1"
+#       DJANGO_SETTINGS_MODULE: myproject.settings
+#       DB_NAME: mydb
+#       DB_USER: myuser
+#       DB_PASSWORD: mypassword
+#       DB_HOST: db
+#       DB_PORT: "5432"
+#     depends_on:
+#       db:
+#         condition: service_healthy
+
+# volumes:
+#   postgres_data:
