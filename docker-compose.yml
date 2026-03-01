@@ -29,6 +29,7 @@ services:
       SECRET_KEY: your-secret-key-change-in-production
       DEBUG: "True"
       ALLOWED_HOSTS: "localhost 127.0.0.1"
+      DJANGO_SETTINGS_MODULE: myproject.settings
       DB_NAME: mydb
       DB_USER: myuser
       DB_PASSWORD: mypassword
