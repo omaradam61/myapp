@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Django App</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #0c4b33; }
+        .item { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .empty { color: #888; }
+    </style>
+</head>
+<body>
+    <h1>🚀 Django + Docker App</h1>
+    <p>Welcome! Add items via the <a href="/admin/">admin panel</a>.</p>
+    <h2>Items</h2>
+    {% if items %}
+        {% for item in items %}
+        <div class="item">
+            <strong>{{ item.title }}</strong>
+            {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+            <small>Added: {{ item.created_at|date:"M d, Y" }}</small>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">No items yet. Add some via the admin panel!</p>
+    {% endif %}
+</body>
+</html>
