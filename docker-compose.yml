@@ -24,7 +24,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       SECRET_KEY: your-secret-key-change-in-production
       DEBUG: "True"
